@@ -1,0 +1,164 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>YEAR TYPE Match Scouting</title>
+
+    <link rel="shortcut icon" href="images/icon.png">
+    <link rel="icon" href="images/icon.png">
+    <link rel="apple-touch-icon" href="images/icon.png">
+
+    <!-- Set Up Jquery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+
+    <!-- Set Up Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+
+    <!-- Set Up Font Awesome and Google Fonts-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+        integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Black+Ops+One" rel="stylesheet">
+
+</head>
+<body style="background-color: aliceblue">
+    <div id="header"></div>
+    <div id = "content" class = "container mt-5">
+        <div class = "d-flex justify-content-center">
+            <div id = "create-card" class = "card text-center col-md-4 mr-3">
+                <div class = "card-body">
+                    <h3>Create Event</h3>
+                    <div id = "create-button"class="btn btn-outline-success">Create</div>
+                </div>
+            </div>
+            <div id="edit-card" class="card text-center col-md-6 ml-3">
+                <div class="card-body">
+                    <h3>Edit Existing Event Info</h3>   
+                    <h5>
+                        <b><u>EDITING AN EVENT WILL DELETE ALL OF ITS SCOUT DATA.</u></b>
+                        <br><br>
+                        To set the app to an already created event, set it directly within
+                        the firebase online console in the metadata section of the database.
+                    </h5>
+                    <select id = "edit-event-options"class="form-control">
+                        <option selected="selected" disabled>Select Existing Event</option>
+                    </select>
+                    <div id="edit-button" class="btn btn-outline-info mt-3">Edit</div>
+                </div>
+            </div>
+        </div>
+
+        <div id = "event-form" style = "background-color: whitesmoke;" class = "rounded px-3 py-3">
+            <div class = "d-flex justify-content-center">
+                <div class = "col-md-6">
+                    <div id = "event-name"class="input-group mt-3 mb-3 ">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Event Name</span>
+                        </div>
+                        <input id = "event-name-input"type="text" class="form-control info">
+                        <div class = "text-center invalid-feedback">Event Name can not be empty</div>
+                    </div>
+                    <div id = "teams">
+                        <div class = "mt-5 text-center">
+                            <h3>Teams At Event</h3>
+                            <p>(Hit Enter for New Line)</p>
+                            <div class="input-group mt-3 mb-3 ">
+                                <input type="text" class="form-control team-info info" >
+                            </div>
+                        </div>
+                        <div class = "text-center">
+                            <div id = "save-teams"class = "btn btn-outline-success">Save</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class = " d-flex justify-content-center mt-5">
+                <div id = "matches" class = "col-md-10">
+                    <div id = "match-info-group" class="text-center">
+                        <h3>Matches at Event</h3>
+                        <div class = "d-flex justify-content-around">
+                            <h4 class = "col-4 ml-3">Red</h4>
+                            <h4 class="col-4">Blue</h4>
+                        </div>
+                    </div>
+                    <div class = "text-center d-flex justify-content-center">
+                        <div id = "add-match-btn" class = "btn btn-outline-info mr-3">Add Match</div>
+                        <div id = "delete-last-match-btn" class = "btn btn-outline-danger mx-3">Delete Last Match</div>
+                        <div id = "save-match-btn" class = "btn btn-outline-success ml-3">Save</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Save Teams Modal -->
+    <div class="modal fade" id="save-teams-modal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Teams Saved</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- Save Matches Modal -->
+    <div class="modal fade" id="save-matches-modal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Matches Save Info</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary ml-3" data-dismiss="modal">Close</button>
+                    <div id = "set-btns">
+                        <button id="set-event-btn" class="btn btn-outline-info mr-3">Set As Current Event</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="/__/firebase/7.8.2/firebase-app.js"></script>
+    
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+            https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="/__/firebase/7.14.5/firebase-auth.js"></script>
+    <script src="/__/firebase/7.8.2/firebase-analytics.js"></script>
+    
+    <!-- Initialize Firebase -->
+    <script src="/__/firebase/init.js"></script>
+
+    <!-- Set Up Program Files-->
+    <script src="js/authentication.js"></script>
+    <script src="js/admin.js"></script>
+    <script src="js/adminServer.js"></script>
+</body>
