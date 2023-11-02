@@ -1,89 +1,253 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Welcome to Firebase Hosting</title>
 
-    <!-- update the version number as needed -->
-    <script defer src="/__/firebase/10.5.0/firebase-app-compat.js"></script>
-    <!-- include only the Firebase features as you need -->
-    <script defer src="/__/firebase/10.5.0/firebase-auth-compat.js"></script>
-    <script defer src="/__/firebase/10.5.0/firebase-database-compat.js"></script>
-    <script defer src="/__/firebase/10.5.0/firebase-firestore-compat.js"></script>
-    <script defer src="/__/firebase/10.5.0/firebase-functions-compat.js"></script>
-    <script defer src="/__/firebase/10.5.0/firebase-messaging-compat.js"></script>
-    <script defer src="/__/firebase/10.5.0/firebase-storage-compat.js"></script>
-    <script defer src="/__/firebase/10.5.0/firebase-analytics-compat.js"></script>
-    <script defer src="/__/firebase/10.5.0/firebase-remote-config-compat.js"></script>
-    <script defer src="/__/firebase/10.5.0/firebase-performance-compat.js"></script>
-    <!-- 
-      initialize the SDK after all desired features are loaded, set useEmulator to false
-      to avoid connecting the SDK to running emulators.
-    -->
-    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+<head>
+    <meta charset="UTF-8">
 
-    <style media="screen">
-      body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
-      #message { background: white; max-width: 360px; margin: 100px auto 16px; padding: 32px 24px; border-radius: 3px; }
-      #message h2 { color: #ffa100; font-weight: bold; font-size: 16px; margin: 0 0 8px; }
-      #message h1 { font-size: 22px; font-weight: 300; color: rgba(0,0,0,0.6); margin: 0 0 16px;}
-      #message p { line-height: 140%; margin: 16px 0 24px; font-size: 14px; }
-      #message a { display: block; text-align: center; background: #039be5; text-transform: uppercase; text-decoration: none; color: white; padding: 16px; border-radius: 4px; }
-      #message, #message a { box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); }
-      #load { color: rgba(0,0,0,0.4); text-align: center; font-size: 13px; }
-      @media (max-width: 600px) {
-        body, #message { margin-top: 0; background: white; box-shadow: none; }
-        body { border-top: 16px solid #ffa100; }
-      }
-    </style>
-  </head>
-  <body>
-    <div id="message">
-      <h2>Welcome</h2>
-      <h1>Firebase Hosting Setup Complete</h1>
-      <p>You're seeing this because you've successfully setup Firebase Hosting. Now it's time to go build something extraordinary!</p>
-      <a target="_blank" href="https://firebase.google.com/docs/hosting/">Open Hosting Documentation</a>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>YEAR TYPE Match Scouting</title>
+
+    <link rel="shortcut icon" href="images/icon.png">
+    <link rel="icon" href="images/icon.png">
+    <link rel="apple-touch-icon" href="images/icon.png">
+
+    <!-- Set Up Jquery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+
+    <!-- Set Up Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+
+    <!-- Set Up Font Awesome and Google Fonts-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+        integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Black+Ops+One" rel="stylesheet">
+
+</head>
+
+<body style="background-color: aliceblue">
+    <div id="header"></div>
+    <div id="content" class="container">
+
+        <!--DO NOT CHANGE THE CODE BELOW THIS-->
+        <div>
+            <div class="text-center mt-5">
+                <h3 id="current-event">Currently Scouting for Event: </h3>
+            </div>
+            <div class=" mt-5 row justify-content-around">
+                <div class=" pb-3 width-50">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <label class="mr-3 mt-2">Match</label>
+                            <select class="custom-select" id="match-choices">
+                                <option disabled selected value> -- select an option -- </option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class=" pb-3 width-50">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <label class="mr-3 mt-2">Team</label>
+                            <select class="custom-select" id="team-choices">
+                                <option disabled selected value> -- select an option -- </option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-3 row justify-content-center">
+                <div class="btn btn-success btn-lg" id="start-clock">Start Scoutting</div>
+            </div>
+            <div class="mt-3 row justify-content-center">
+                <div id="timeContainer" class="px-3 py-2 my-auto align-items-center d-flex"
+                    style="border: 3px solid black; background-color: whitesmoke;">
+                    <h1 class="fw-bold" id="time">00 : 00</h1>
+                </div>
+            </div>
+        </div>
+        <!--DO NOT CHANGE THE CODE ABOVE THIS-->
+
+        <!--
+            NOTE: The code in Main.js will hide the html in this below div by default.
+            When creating this page, it may be easiest to comment out
+            the line in Main.js that hides this. 
+            REMEMBER TO UNCOMMENT IT WHEN DONE TESTING
+        -->
+        <div id="main">
+            <!-- 
+                Some notes for creating the inputs for this page. 
+
+                1. Follow the Instructions for setting up the back-end index.js first!
+
+                2. To make this page look nice, it is recommended that you have some knowledge
+                    in using bootstrap, especially its row and column features and 
+                    its ability to make a card. Info on how to use Bootstrap can be found through
+                    their documenatation: https://getbootstrap.com/docs/4.0/getting-started/introduction/
+                    by going to the "Components" tab. Try making a seperate html document
+                    and playing with bootstrap until you feel comfortable
+
+                3. For each location you want to retrieve an input from, the tag
+                must have the class "data" as one of its classes and it must
+                have an ID which matches the storage path on the empty match data 
+                object created in the back-end index.js, with "-" seperating 
+                each key. It should look like this: "gameperiod-task".
+                So for example, if your match data object looks like this:
+                gameplay:{
+                    auto: {
+                        "line": 0,
+                        ...
+                    },
+                    teleop: {
+                        "jumps": 0,
+                        ...
+                    }, 
+                    ...
+                }
+                Then the ID for whatever input you are using for keeping track of the 
+                line crossing in auto has to be "auto-line" and the ID for whatever you are 
+                using for keeping track of the jumps in teleop has to be "teleop-jumps".
+
+                4. The code in main.js is capable of retrieving and reseting data from checkboxes 
+                and incrementation/decrementation choices by default. If you need to create 
+                a different form of input, follow the instructions of main.js to retrieve and reset 
+                the values, and MAKE SURE to include the class and ID described in Note 2 above
+                for your new input
+
+                5. Sample HTML:
+
+                    For a checkbox - Note how the input tag has a class of "data" 
+                                    and its ID is the general case as an example. 
+                                    Also, that the label has a "for" attribute which MUST match 
+                                    the ID of the input:
+                        <div class = "card">
+                            <div class="card-body">
+                                    <div class="form-check">
+                                        
+                                        <input class="form-check-input data" type="checkbox" id = "gameperiod-task">
+
+                                        <label class="form-check-label" for="gameperiod-task">
+                                            Task 
+                                        </label>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    
+                    For an incrementation/decrementation box - Note how the tag where we plan to retrieve 
+                                                               the data has a class of "data" and its ID is the general case
+                                                                as an example.
+
+                                                                Also, the + and - buttons have a "for" attribute which MUST 
+                                                                correspond to the ID of the tag where we retrive data and
+                                                                the + and - button MUST have the class "change-btn" as well
+                                                                as either the class "decrement" or "increment" respectively. These
+                                                                attributes and classes are used in the code within main.js for changing
+                                                                the value of the tag where we retrieve data. 
+
+                        <div class=" d-flex justify-content-center mt-2">
+                            <div class="input-group mt-3 w-75">
+
+                                <div class="input-group-prepend">
+                                    <button for="gameperiod-task" class="btn btn-outline-secondary change-btn decrement" type="button">-</button>
+                                </div>
+
+                                <div id="gameperiod-task" class="form-control data">
+                                    0
+                                </div>
+
+                                <div class="input-group-append">
+                                    <button for="gameperiod-task" class="btn btn-outline-secondary change-btn increment" type="button">+</button>
+                                </div>
+
+                            </div>
+                        </div>
+            -->
+
+            <div class="mt-5">
+                <div class="row justify-content-center">
+                    <!--TODO: Not necessary, but use this area for information 
+                              about the robot before the match begins, like if it is a 
+                            no show.
+                    -->
+
+                </div>
+            </div>
+
+            <div class="mt-5">
+                <h1 class="text-center">Autonomous</h1>
+                <!--TODO: Insert Scout Inputs for Autonomous here-->
+
+            </div>
+
+
+            <div class="mt-5">
+                <h1 class="text-center">Teleop</h1>
+                <!--TODO: Insert Scout Inputs for Teleop here-->
+
+            </div>
+
+
+            <div class="mt-5">
+                <h3 class="text-center">Endgame</h3>
+                <!--TODO: Insert Scout Inputs for Endgame here-->
+
+            </div>
+
+            <!--No need to change the save button-->
+            <div class="mt-3 ml-3 float-right">
+                <div data-toggle="modal" data-target="#save-modal" class="btn btn-success btn-lg">Save</div>
+            </div>
+
+        </div>
+        <div style="height:15em">
+        </div>
     </div>
-    <p id="load">Firebase SDK Loading&hellip;</p>
 
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const loadEl = document.querySelector('#load');
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-        // // The Firebase SDK is initialized and available here!
-        //
-        // firebase.auth().onAuthStateChanged(user => { });
-        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
-        // firebase.firestore().doc('/foo/bar').get().then(() => { });
-        // firebase.functions().httpsCallable('yourFunction')().then(() => { });
-        // firebase.messaging().requestPermission().then(() => { });
-        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
-        // firebase.analytics(); // call to activate
-        // firebase.analytics().logEvent('tutorial_completed');
-        // firebase.performance(); // call to activate
-        //
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+    <!--No need to change the save modal-->
+    <!-- Save Modal -->
+    <div class="modal fade" id="save-modal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Submit</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to submit? <b>You <u>can not</u> edit your data after submitting.</b>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" data-dismiss="modal">Go Back</button>
+                    <button class="btn btn-primary" data-dismiss="modal" id="submit-btn">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        try {
-          let app = firebase.app();
-          let features = [
-            'auth', 
-            'database', 
-            'firestore',
-            'functions',
-            'messaging', 
-            'storage', 
-            'analytics', 
-            'remoteConfig',
-            'performance',
-          ].filter(feature => typeof app[feature] === 'function');
-          loadEl.textContent = `Firebase SDK loaded with ${features.join(', ')}`;
-        } catch (e) {
-          console.error(e);
-          loadEl.textContent = 'Error loading the Firebase SDK, check the console.';
-        }
-      });
-    </script>
-  </body>
-</html>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="/__/firebase/7.8.2/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+            https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="/__/firebase/7.14.5/firebase-auth.js"></script>
+    <script src="/__/firebase/7.8.2/firebase-analytics.js"></script>
+
+    <!-- Initialize Firebase -->
+    <script src="/__/firebase/init.js"></script>
+
+    <!-- Set Up Program Files-->
+    <script src="js/main.js"></script>
+    <script src="js/userServer.js"></script>
+    <script src="js/authentication.js"></script>
+</body>
